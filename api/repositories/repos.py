@@ -1,9 +1,38 @@
 from core.rest_client import RestClient
+from api.repositories.releases import Releases
+from api.repositories.traffic import Traffic
+from api.repositories.statistics import Statistics
+from api.repositories.statuses import Statuses
+from api.repositories.hooks import Hooks
+from api.repositories.branches import Branches
+from api.repositories.pages import Pages
+from api.repositories.repositories import Repositories
+from api.repositories.comments import Comments
+from api.repositories.commits import Commits
+from api.repositories.invitations import Invitations
+from api.repositories.contents import Contents
+from api.repositories.deployments import Deployments
+from api.repositories.downloads import Downloads
 
 
 class Repos(RestClient):
     def __init__(self, api_root_url, **kwargs):
         super(Repos, self).__init__(api_root_url, **kwargs)
+        self.releases = Releases(self.api_root_url, **kwargs)
+        self.traffic = Traffic(self.api_root_url, **kwargs)
+        self.statistics = Statistics(self.api_root_url, **kwargs)
+        self.statuses = Statuses(self.api_root_url, **kwargs)
+        self.hooks = Hooks(self.api_root_url, **kwargs)
+        self.branches = Branches(self.api_root_url, **kwargs)
+        self.pages = Pages(self.api_root_url, **kwargs)
+        self.repositories = Repositories(self.api_root_url, **kwargs )
+        self.comments = Comments(self.api_root_url, **kwargs )
+        self.commits = Commits(self.api_root_url, **kwargs )
+        self.invitations = Invitations(self.api_root_url, **kwargs )
+        self.contents = Contents(self.api_root_url, **kwargs )
+        self.deployments = Deployments(self.api_root_url, **kwargs )
+        self.downloads = Downloads(self.api_root_url, **kwargs )
+
 
     def list_your_repos(self, **kwargs):
         """
